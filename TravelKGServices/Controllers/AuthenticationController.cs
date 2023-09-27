@@ -1,4 +1,4 @@
-﻿namespace TravelKGServices.Constants;
+﻿namespace TravelKGServices.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
