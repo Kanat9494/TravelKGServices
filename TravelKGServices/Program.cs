@@ -28,6 +28,20 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+//Entity Framework
+builder.Services.AddDbContext<TravelKGContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("TravelKGConnection")
+    )
+);
+
+//builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+builder.Services.AddHttpContextAccessor();
+
+//Registering services
+builder.Services.AddScoped(typeof(IFileService<MediaFile>), typeof(MediaFileService));
+builder.Services.AddScoped(typeof(IAuthenticationService<AuthUserResponse>), typeof(UserAuthenticationService));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
